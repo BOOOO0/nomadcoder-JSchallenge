@@ -1,0 +1,19 @@
+body {
+    font-family: sans-serif;
+  }
+#app{
+    height: 100%;
+}
+#app h1 {
+    color: white;
+}
+.blue {
+    background-color: blue;
+}
+.purple {
+    background-color: purple;
+}
+.orange {
+    background-color: orange;
+}
+  

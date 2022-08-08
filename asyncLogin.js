@@ -17,26 +17,25 @@ function alreadyLogin(ID) {
   modal.classList.add(HIDDEN_CLASSNAME);
   hiddenWrapper.classList.remove(BLUR_CLASSNAME);
 }
-function async(ID) {
-  modal.classList.add(HIDDEN_CLASSNAME);
-  loginForm.classList.add(HIDDEN_CLASSNAME);
+async function load() {
   loading.classList.remove(HIDDEN_CLASSNAME);
-  greeting.innerHTML = `Hello, ${ID}`;
-  setTimeout(function Login(ID) {
-    hiddenWrapper.classList.remove(BLUR_CLASSNAME);
+  setTimeout(() => {
     loading.classList.add(HIDDEN_CLASSNAME);
   }, 2000);
 }
+function loaded() {
+  hiddenWrapper.classList.remove(BLUR_CLASSNAME);
+}
 
-function onSubmit(event) {
-  `    `;
+async function onSubmit(event) {
   event.preventDefault();
   localStorage.setItem("username", loginInput.value);
-  async(ID);
+  loginForm.classList.add(HIDDEN_CLASSNAME);
+  modal.classList.add(HIDDEN_CLASSNAME);
 }
 
 if (ID === null) {
-  loginForm.addEventListener("submit", onSubmit);
+  loginForm.addEventListener("submit", onSubmit.then(load().then(loaded())));
 } else {
   alreadyLogin(ID);
 }
